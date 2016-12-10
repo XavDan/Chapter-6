@@ -46,10 +46,6 @@ public class Prog63
 	public static int mainGuess()
 	{
 		Scanner userGuessing = new Scanner(System.in);
-		//String guesserino;
-		1
-		//guesserino = userGuessing.next();
-		//int guessed= Integer.parseInt(guesserino);
 		int guessed = 0;
 		int random = (int)(Math.random() * 100 + 1);
 		

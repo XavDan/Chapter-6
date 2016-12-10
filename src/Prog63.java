@@ -11,23 +11,30 @@ public class Prog63
 	{
 		Scanner whichgame = new Scanner(System.in);
 		String game;
-		System.out.println("Would you like to play 1) Guess a number or 2) Slot machine?");
-		game = whichgame.next();
-		double gamerino = Double.parseDouble(game);
-		if(gamerino == 1.0)
-		{
-			guessing();
-		}
-		else if(gamerino == 2.0)
-		{
-			slotmachine();
-		}
-		else
-		{
-			main(args);
-		}
+		int gamerino = 0;
+		do {
+			System.out.println("Would you like to play 1) Guess a number or 2) Slot machine?");
+			game = whichgame.next();
 
-
+			try {
+				gamerino =  Integer.parseInt(game);
+			} catch(NumberFormatException e) {
+				System.out.println("EXCEPTION! Non-numeric input: " + e.getMessage());
+			}
+			
+			if (gamerino == 1)
+			{
+				guessing();
+				return;
+			}
+			else if(gamerino == 2)
+			{
+				slotmachine();
+				return;
+			} else {
+				System.out.println("Invalid selection, please try again");
+			}
+		} while (true);
 	}
 	//The guessing game
 	public static void guessing() 

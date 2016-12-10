@@ -46,48 +46,38 @@ public class Prog63
 	public static int mainGuess()
 	{
 		Scanner userGuessing = new Scanner(System.in);
-		String guesserino;
-		guesserino = userGuessing.next();
-		double guessed= Double.parseDouble(guesserino);
+		//String guesserino;
+		1
+		//guesserino = userGuessing.next();
+		//int guessed= Integer.parseInt(guesserino);
+		int guessed = 0;
+		int random = (int)(Math.random() * 100 + 1);
 		
-		
-		
-		//if(guessed)
-
-
-		  
-		  
-		  
-		  
-		  
-		for(int random = (int)(Math.random() * 100 + 1);;)
-		{
-			
-			while(guessed < random)
-			{
-				ifLower();
+		do {
+			try{
 				guessed = userGuessing.nextInt();
+				if (guessed == random)
+				{
+					ifCorrect();
+				} else 	if ((guessed > 100) || (guessed <= 0))
+				{
+					System.out.println("Entry out of bounds. Please enter a number between 1 and 100.");
+				}
+				else if (guessed < random)
+				{
+					ifLower();
+				}
+				else if (guessed > random)
+				{
+					ifHigher();
+				}
 			}
-			while(guessed > random)
-			{
-				ifHigher();
-				guessed = userGuessing.nextInt();
+			catch(Exception e) {
+				System.out.println("EXCEPTION! Non-numeric input. Please try again.");
+				userGuessing.nextLine(); // To force the scanner past the bad input
 			}
-			while(guessed == random)
-			{
-				ifCorrect();
-			}
-			if(guessed > 100 || guessed < 0)
-			{
-				System.out.println("Please enter a number between 1 and 100.");
-				mainGuess();
-			}
-			else
-			{
-				mainGuess();
-			}
-					
-		}
+		} while (guessed != random);
+		return guessed;
 	}
 	
 	public static void ifLower()

@@ -9,6 +9,7 @@ public class Prog63
 
 	public static void main(String[] args) 
 	{
+		// branching example
 		Scanner whichgame = new Scanner(System.in);
 		String game;
 		int gamerino = 0;
